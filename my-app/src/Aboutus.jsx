@@ -1,11 +1,9 @@
-// src/AboutUs.js
-
 import React from 'react';
-import './AboutUs.css'; // Import the CSS file for styling
+import './style.css';
 
 const AboutUs = () => {
   return (
-    <div className="about-us">
+    <div className="page-container about-us">
       <h1>About Us</h1>
       <section className="mission">
         <h2>Our Mission</h2>

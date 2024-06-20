@@ -1,0 +1,70 @@
+/* styles.css */
+
+.page-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  section {
+    margin-bottom: 40px;
+  }
+  
+  h2 {
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    line-height: 1.6;
+  }
+  
+  .about-us .team-member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .about-us .team-member img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+
+  .header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin: 0 15px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
