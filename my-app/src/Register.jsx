@@ -1,12 +1,37 @@
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom"
 
 export const Register = (props) => {
     const [pass, setPass] = useState('');
     const [name, setUsername] = useState('');
+    const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(name);
+        const params = {
+            name: name,
+            password: pass
+        };
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params)
+        };
+        try{
+            let response = await fetch('http://localhost:8000/api/signup/', requestOptions);
+            if (response.ok){
+                let data = await response.json();
+                console.log(data);
+                navigate('/login', { state: { message: 'User created successfully! ✅'}})
+                
+            }
+        }catch (e){
+            console.log(e);
+        }
+
     }
 
     return (

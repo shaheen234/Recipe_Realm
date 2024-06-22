@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import User,Recipe,SavedRecipe,Review
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from django.contrib.auth import authenticate
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,18 +17,29 @@ class UserSerializer(serializers.ModelSerializer):
             name=validated_data['name']
         )
         return user
-class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    username_field = 'name'
+class Loginserializer(serializers.Serializer):
+    name = serializers.CharField(max_length=150)
+    password = serializers.CharField(max_length=128)
 
-    def validate(self, attrs):
-        attrs['username'] = attrs.get('name')
-        return super().validate(attrs)
+    def validate(self, data):
+        name = data.get('name')
+        password = data.get('password')
+
+        if not name and password:
+            raise serializers.ValidationError("Username and password are required.")
+
+        user = authenticate(username=name, password=password)
+        if not user:
+            raise serializers.ValidationError("Invalid credentials.")
+        
+        data['user'] = user
+        return data
 
 
 class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
-        fields = ['recipetype', 'recipe_id', 'description', 'ingredients', 'title', 'minutes_to_cook', 'user']
+        fields = ['recipetype', 'recipe_id', 'description', 'ingredients', 'title', 'minutes_to_cook']
 
         def create(self, validated_data):
             return Recipe.objects.create(**validated_data)

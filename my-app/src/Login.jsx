@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useLocation } from 'react-router-dom'
+import './login.css'
 
 export const Login = (props) => {
     const [email, setUsername] = useState('');
     const [pass, setPass] = useState('');
+
+    const location = useLocation();
+    const { message } = location.state || {};
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -11,6 +16,7 @@ export const Login = (props) => {
 
     return (
         <div className="auth-form-container">
+            <div className='success-msg'>{message}</div>
             <h2>Log In</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="name">Username</label>
