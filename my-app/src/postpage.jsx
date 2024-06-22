@@ -3,8 +3,14 @@ import { useParams } from 'react-router-dom';
 
 // Sample posts data
 const posts = [
-  { id: 1, title: 'Post 1', description: 'This is the first post', imageUrl: '/images/post1.jpg' },
-  { id: 2, title: 'Post 2', description: 'This is the second post', imageUrl: '/images/post2.jpg' },
+  { id: 1, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
+  { id: 2, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
+  { id: 3, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
+  { id: 4, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
+  { id: 5, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
+  { id: 6, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
+  { id: 7, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
+  { id: 8, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' }
 ];
 
 const PostPage = () => {

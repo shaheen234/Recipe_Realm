@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
+  background-image: linear-gradient(79deg, #ffffff, #fceefa 48%, #ffffff);
 }
 
 .auth-form-container, .login-form, .register-form {
@@ -16,18 +16,21 @@
 @media screen and (min-width: 600px) {
   .auth-form-container{
     padding: 5rem;
-    border: 1px solid white;
+    border: 0px solid rgb(0, 0, 0);
     border-radius: 10px;
     margin: 0.5rem;
   }
 }
 
 label {
+  font-weight: 500;
+  color: black;
   text-align: left;
   padding: 0.25rem 0;
 }
 
 input {
+  color: black;
   margin: 0.5rem 0;
   padding: 1rem;
   border: none;
@@ -36,15 +39,68 @@ input {
 
 button {
   border: none;
-  background-color: white;
+  background-color: #f4c1c1;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
-  color: #7439db;
+  color: #000000;
 }
 
 .link-btn {
   background: none;
   color: white;
   text-decoration: underline;
+}
+
+
+
+/*home*/
+h1{
+  color: #000000;
+}
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0;
+  margin-left: 200px;
+  margin-right: 200px;
+  list-style: none;
+}
+
+.post-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.post-item:hover {
+  transform: scale(1.05);
+}
+
+.post-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.post-title{
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.post-desc{
+  color: #000000;
+}
+
+.par-coursel{
+  align-items: center;
+}
+
+.par-coursel .coursel{
+  display: grid;
+  grid-template-columns: repeat(3, 0fr);
+  
 }

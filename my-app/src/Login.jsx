@@ -1,17 +1,42 @@
 import React, { useState } from "react";
 import { useLocation } from 'react-router-dom'
+import {useNavigate} from "react-router-dom"
 import './login.css'
 
 export const Login = (props) => {
     const [email, setUsername] = useState('');
     const [pass, setPass] = useState('');
+    const navigate = useNavigate()
 
     const location = useLocation();
     const { message } = location.state || {};
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(email);
+        const params = {
+            name: email,
+            password: pass
+        };
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(params)
+        };
+        try{
+            let response = await fetch('http://localhost:8000/api/login/', requestOptions);
+            if (response.ok){
+                let data = await response.json();
+                console.log(data);
+                navigate('/home', { state: { message: 'Logged In successfully! ✅'}})
+                
+            }
+        }catch (e){
+            console.log(e);
+        }
+
     }
 
     return (
