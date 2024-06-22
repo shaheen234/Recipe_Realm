@@ -39,9 +39,12 @@ class Loginserializer(serializers.Serializer):
 class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
-        fields = ['recipetype', 'recipe_id', 'description', 'ingredients', 'title', 'minutes_to_cook']
+        fields = ['recipetype', 'description', 'ingredients', 'title', 'minutes_to_cook', 'user']
 
         def create(self, validated_data):
+            # user = self.context['request'].user
+            # print("User: ", user)
+            # print("Validated data: ", validated_data)
             return Recipe.objects.create(**validated_data)
 
 class SavedRecipeSerializer(serializers.ModelSerializer):
