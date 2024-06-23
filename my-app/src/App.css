@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  display: flex;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
@@ -106,4 +105,119 @@ h1{
   grid-template-columns: repeat(3, 0fr);
   grid-gap:1rem;
   
+}
+
+/*AddRecipe*/
+.add-recipe-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.add-recipe-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.add-recipe-container form div {
+  margin-bottom: 15px;
+}
+
+.add-recipe-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-recipe-container input,
+.add-recipe-container textarea,
+.add-recipe-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-recipe-container button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-recipe-container button:hover {
+  background-color: #45a049;
+}
+
+.form-conatiner{
+  padding-right: 20px;
+}
+
+/*Comment sec*/
+.comments-section-container {
+  display: flex;
+  justify-content: center; /* Center the container horizontally */
+  margin-top: 20px;
+}
+
+.comments-section {
+  max-width: 600px; /* Set a max width for the comment section */
+  width: 100%; /* Ensure it takes full width up to max width */
+  background-color: #cdcdcd; /* Optional: Add background color for better visibility */
+  padding: 20px; /* Optional: Add padding for better spacing */
+  border-radius: 8px; /* Optional: Add border radius for rounded corners */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow */
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.comment-form textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.comment-form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #45a049;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.comment-item p {
+  margin: 0;
+}
+
+.comment-item span {
+  display: block;
+  font-size: 0.8em;
+  color: #777;
 }
