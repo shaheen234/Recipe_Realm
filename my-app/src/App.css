@@ -6,12 +6,13 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: linear-gradient(79deg, #ffffff, #fceefa 48%, #ffffff);
+  background-image: #F0F7EE;
 }
 
 .auth-form-container, .login-form, .register-form {
   display: flex;
   flex-direction: column;
+  background-color: #FFF07C;
 }
 
 @media screen and (min-width: 600px) {
@@ -40,16 +41,16 @@ input {
 
 button {
   border: none;
-  background-color: #f4c1c1;
+  background-color: #ff6347;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
-  color: #000000;
+  color: #ffffff;
 }
 
 .link-btn {
   background: none;
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: underline;
 }
 
@@ -120,7 +121,7 @@ h1 {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #FFF07C;
 }
 
 .add-recipe-container h2 {
@@ -151,15 +152,14 @@ h1 {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.add-recipe-container button:hover {
-  background-color: #45a049;
+.img-small{
+  color: black;
 }
 
 .form-container {

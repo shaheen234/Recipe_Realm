@@ -5,31 +5,34 @@ import './App.css'; // Import the CSS file
 const AddRecipe = () => {
   const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');
-  const [image, setImage] = useState('');
+  const [imageFile, setImageFile] = useState(null); // State to hold the uploaded image file
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
   const [cookingTime, setCookingTime] = useState('');
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const params = {
-      category,
-      title,
-      image,
-      ingredients,
-      instructions,
-      cookingTime
-    };
+    const formData = new FormData();
+    formData.append('category', category);
+    formData.append('title', title);
+    if (imageFile) {
+      formData.append('image', imageFile);
+    }
+    formData.append('ingredients', ingredients);
+    formData.append('instructions', instructions);
+    formData.append('cookingTime', cookingTime);
 
     const requestOptions = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(params)
+      body: formData,
     };
 
     try {
@@ -45,7 +48,7 @@ const AddRecipe = () => {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   return (
     <div className="add-recipe-page">
@@ -64,16 +67,12 @@ const AddRecipe = () => {
           </div>
           <div>
             <label>Title:</label>
-            <input 
-              type="text" 
-              value={title} 
-              onChange={(e) => setTitle(e.target.value)} 
-              required 
-            />
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
           </div>
           <div>
-            <label>Image URL:</label>
-            <input type="text" value={image} onChange={(e) => setImage(e.target.value)} required />
+            <label>Upload Image:</label>
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+            <small className='img-small'>Optional: Upload an image file</small>
           </div>
           <div>
             <label>Ingredients:</label>
@@ -92,6 +91,6 @@ const AddRecipe = () => {
       </div>
     </div>
   );
-}
+};
 
 export default AddRecipe;
