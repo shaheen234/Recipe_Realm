@@ -1,26 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
-// Sample posts data
-const posts = [
-  { id: 1, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
-  { id: 2, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
-  { id: 3, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
-  { id: 4, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
-  { id: 5, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
-  { id: 6, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
-  { id: 7, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' },
-  { id: 8, title: 'Chili', description: 'This is the first post', imageUrl: '/chili.jpg' }
-];
 
 const PostPage = () => {
   const { id } = useParams();
-  const post = posts.find(post => post.id === parseInt(id));
+  const [post, setPost] = useState(null);
+  const [owner, setOwner] = useState(null);
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState('');
 
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/get_recipe_detail/${id}/`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const postData = await response.json();
+        console.log(postData)
+        setPost(postData.recipe);
+        setOwner(postData.owner);
+      } catch (error) {
+        console.error('Error fetching post:', error);
+        // Handle error, show a message, etc.
+      }
+    };
+
+    fetchPost();
+  }, [id]); // Fetch whenever the `id` parameter changes
+
   if (!post) {
-    return <div>Post not found</div>;
+    return <div>Loading...</div>; // You can render a loading indicator
   }
 
   const handleCommentSubmit = (e) => {
@@ -40,10 +49,13 @@ const PostPage = () => {
   return (
     <div>
       <h1>{post.title}</h1>
-      <img src={post.imageUrl} alt={post.title} style={{ width: '300px' }} />
+      <img src={`http://127.0.0.1:8000${post.image}`} alt={post.title} style={{ width: '300px' }} />
       <p>{post.description}</p>
+      <p>Time to Cook: {post.minutes_to_cook}</p>
+      <p>Owner: {owner.name}</p>
+      
 
-      <div className="comments-section-container"> {/* Add this container */}
+      <div className="comments-section-container">
         <div className="comments-section">
           <h2>Comments</h2>
           <form onSubmit={handleCommentSubmit} className="comment-form">
