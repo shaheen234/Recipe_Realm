@@ -46,16 +46,22 @@ useEffect(() => {
       <div className='par-coursel'>
         <div className='coursel'>
           <div class="bubble-cuisines" role="button" aria-label="American">
-            <img alt="" src="https://x.yummlystatic.com/web/bubble/cuisine/american.png" class="bubble-image"/>
-            <span class="text micro-caps font-bold bubble-text">American</span>
+            <Link to="" role="button" aria-label="American">
+              <img alt="" src="https://x.yummlystatic.com/web/bubble/cuisine/american.png" class="bubble-image"/>
+              <span class="text micro-caps font-bold bubble-text">BreakFast</span>
+            </Link>
           </div>
           <div class="bubble-cuisines" role="button" aria-label="American">
-            <img alt="" src="https://x.yummlystatic.com/web/bubble/cuisine/american.png" class="bubble-image"/>
-            <span class="text micro-caps font-bold bubble-text">American</span>
+            <Link to="" role="button" aria-label="American">
+              <img alt="" src="https://x.yummlystatic.com/web/bubble/cuisine/american.png" class="bubble-image"/>
+              <span class="text micro-caps font-bold bubble-text">Meal</span>
+            </Link>
           </div>
           <div class="bubble-cuisines" role="button" aria-label="American">
-            <img alt="" src="https://x.yummlystatic.com/web/bubble/cuisine/american.png" class="bubble-image"/>
-            <span class="text micro-caps font-bold bubble-text">American</span>
+            <Link to="" role="button" aria-label="American">
+              <img alt="" src="https://x.yummlystatic.com/web/bubble/cuisine/american.png" class="bubble-image"/>
+              <span class="text micro-caps font-bold bubble-text">Dessert</span>
+            </Link>
           </div>
         </div>
       </div>      
