@@ -21,14 +21,15 @@ const AddRecipe = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('category', category);
+    formData.append('recipetype', category); // Assuming 'category' maps to 'recipetype'
+    formData.append('description', ''); // You need to handle description separately if required
+    formData.append('ingredients', ingredients);
     formData.append('title', title);
+    formData.append('minutes_to_cook', cookingTime);
+
     if (imageFile) {
       formData.append('image', imageFile);
     }
-    formData.append('ingredients', ingredients);
-    formData.append('instructions', instructions);
-    formData.append('cookingTime', cookingTime);
 
     const requestOptions = {
       method: 'POST',
@@ -43,10 +44,11 @@ const AddRecipe = () => {
         navigate('/home', { state: { message: 'Recipe added successfully! ✅' } });
       } else {
         let data = await response.json();
-        setError(data.detail);
+        setError(data.detail); // Assuming the server returns an error message in 'detail'
       }
     } catch (e) {
-      console.log(e);
+      console.error('Error adding recipe:', e);
+      setError('Failed to add recipe. Please try again.'); // Generic error message for unexpected errors
     }
   };
 
