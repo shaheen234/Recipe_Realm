@@ -47,6 +47,11 @@ class RecipeSerializer(serializers.ModelSerializer):
             # print("User: ", user)
             # print("Validated data: ", validated_data)
             return Recipe.objects.create(**validated_data)
+class RecipeiesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Recipe
+        fields = ['recipe_id', 'title', 'minutes_to_cook']
+
 
 class SavedRecipeSerializer(serializers.ModelSerializer):
     class Meta:

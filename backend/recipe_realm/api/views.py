@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
-from .models import User
-from .serializers import RecipeSerializer, UserSerializer,Loginserializer
+from .models import User, Recipe
+from .serializers import RecipeSerializer, UserSerializer,Loginserializer, RecipeiesSerializer
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 import jwt
@@ -82,4 +82,55 @@ class AddRecipeView(APIView):
             },
             status=status.HTTP_201_CREATED
             )
-       
+class GetAllRecipeView(APIView):
+    def get(self, request):
+        recipies = RecipeiesSerializer(Recipe.objects.all(), many=True)
+        if recipies:
+            return Response(
+            {
+            'recipie': recipies.data,
+            'detail':'Found these Recipies'
+            },
+            status=status.HTTP_200_OK
+            )
+
+class GetDetailedRecipeView(APIView):
+    def get(self, request,recipe_id):
+        recipe = Recipe.objects.get(pk=recipe_id)
+        if not recipe:
+            return Response({'details':'Recipe not FOund'}, status=status.HTTP_404_NOT_FOUND)
+        user = recipe.user
+        return Response(
+            {
+            'recipie': RecipeSerializer(recipe).data,
+            "owner": UserSerializer(user).data,
+            'detail':'Recipe Details'
+            },
+            status=status.HTTP_200_OK
+            )
+        
+        
+
+class AddComment(APIView):
+    def post(self, request,recipe_id):
+        token = request.COOKIES.get('jwt_access_token')
+        if token:
+            if token.startswith('Bearer '):
+                token = token.split(' ')[1]
+            try:
+                decoded_token = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+                user_id = decoded_token.get('user_id')
+                if user_id:
+                    try:
+                        user = User.objects.get(user_id=user_id)
+                    except User.DoesNotExist:
+                        return Response({'details':'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+            except jwt.ExpiredSignatureError:
+                return Response({'details':'JWT has expired'}, status=status.HTTP_400_BAD_REQUEST)
+            except jwt.InvalidTokenError:
+                return Response({'details':'Invalid JWT'}, status=status.HTTP_400_BAD_REQUEST)
+        data = request.data.copy()
+    
+
+
+
