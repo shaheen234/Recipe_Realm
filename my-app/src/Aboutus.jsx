@@ -17,7 +17,7 @@ const AboutUs = () => {
         <div className="team-member">
           <img src="path_to_image" alt="Team Member" />
           <h3>John Doe</h3>
-          <p>CEO & Founder</p>
+          <p>CEO</p>
         </div>
         <div className="team-member">
           <img src="path_to_image" alt="Team Member" />
