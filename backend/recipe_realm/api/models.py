@@ -32,7 +32,7 @@ class Recipe(models.Model):
     title = models.CharField(max_length=255)
     minutes_to_cook = models.DurationField()
     image=models.ImageField(default='backend/recipe_realm/image/defualt.jpeg')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
 
 class SavedRecipe(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)

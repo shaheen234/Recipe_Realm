@@ -96,11 +96,14 @@ h1{
 }
 
 .par-coursel{
+  width: fit-content;
+  margin:auto;
   align-items: center;
 }
 
 .par-coursel .coursel{
   display: grid;
   grid-template-columns: repeat(3, 0fr);
+  grid-gap:1rem;
   
 }

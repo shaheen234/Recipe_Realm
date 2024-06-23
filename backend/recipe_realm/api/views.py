@@ -27,6 +27,7 @@ class UserLoginView(APIView):
             try:
                 data=request.data
                 serializer = Loginserializer(data=data)
+                
                 if serializer.is_valid():
                     user = serializer.validated_data['user']
                     refresh = RefreshToken.for_user(user)
@@ -41,6 +42,8 @@ class UserLoginView(APIView):
 
                     # print(user.is_autheticated)
                     return response
+                else:
+                    return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
             except Exception as e:
                     print(e)
                     return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)

@@ -9,3 +9,11 @@
 h2{
     color: black;
 }
+
+.error-msg{
+    padding: 0.5rem 0rem;
+    background-color: rgb(253, 193, 193);
+    border-radius: 10px;
+    color: rgb(174, 8, 8);
+    font-weight: bold;
+}

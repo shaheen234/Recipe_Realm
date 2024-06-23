@@ -7,6 +7,7 @@ export const Login = (props) => {
     const [email, setUsername] = useState('');
     const [pass, setPass] = useState('');
     const navigate = useNavigate()
+    const [error, setError] = useState(null)
 
     const location = useLocation();
     const { message } = location.state || {};
@@ -31,7 +32,11 @@ export const Login = (props) => {
                 let data = await response.json();
                 console.log(data);
                 navigate('/home', { state: { message: 'Logged In successfully! ✅'}})
-                
+            
+            }else{
+                let data = await response.json();
+                setError(data.detail)
+
             }
         }catch (e){
             console.log(e);
@@ -41,7 +46,8 @@ export const Login = (props) => {
 
     return (
         <div className="auth-form-container">
-            <div className='success-msg'>{message}</div>
+            {message? <div className='success-msg'>{message}</div> :null }
+            {error? <div className='error-msg'>{error}</div> : null}
             <h2>Log In</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="name">Username</label>
