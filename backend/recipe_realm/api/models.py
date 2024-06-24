@@ -31,7 +31,7 @@ class Recipe(models.Model):
     ingredients = models.TextField()
     title = models.CharField(max_length=255)
     minutes_to_cook = models.DurationField()
-    image=models.ImageField(default='/defualt.jpeg')
+    image=models.ImageField(default='/defualt.jpeg', upload_to="uploads/")
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
 class SavedRecipe(models.Model):

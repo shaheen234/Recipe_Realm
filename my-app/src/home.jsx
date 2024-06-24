@@ -62,7 +62,7 @@ const HomePage = () => {
         {/* Display filtered recipes if a recipe type is selected */}
         {selectedRecipeType ? (
           recipes.map(recipe => (
-            recipe.recipe_type === selectedRecipeType && (
+            recipe.recipetype === selectedRecipeType && (
               <li key={recipe.recipe_id} className="post-item">
                 <Link to={`/post/${recipe.recipe_id}`}>
                   <img src={`http://127.0.0.1:8000${recipe.image}`} alt={recipe.title} />

@@ -16,32 +16,40 @@ const AddRecipe = () => {
     const file = e.target.files[0];
     setImageFile(file);
   };
-
+  const getCookie = (name) => {
+    const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return cookieValue ? cookieValue.pop() : '';
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
     formData.append('recipetype', category); // Assuming 'category' maps to 'recipetype'
     formData.append('description', ''); // You need to handle description separately if required
     formData.append('ingredients', ingredients);
     formData.append('title', title);
     formData.append('minutes_to_cook', cookingTime);
-
+  
     if (imageFile) {
       formData.append('image', imageFile);
     }
-
+  
     const requestOptions = {
       method: 'POST',
-      body: formData,
+      body: JSON.stringify(formData),
+      credentials: 'include', // Ensure credentials are included
+      headers: {
+        Authorization: `Bearer ${getCookie('jwt_access_token')}`, // Assuming you have a function to get the cookie value
+      },
     };
-
+  
     try {
       let response = await fetch('http://localhost:8000/api/add-recipe/', requestOptions);
+  
       if (response.ok) {
         let data = await response.json();
         console.log(data);
-        navigate('/home', { state: { message: 'Recipe added successfully! ✅' } });
+        //navigate('/home', { state: { message: 'Recipe added successfully! ✅' } });
       } else {
         let data = await response.json();
         setError(data.detail); // Assuming the server returns an error message in 'detail'
@@ -51,6 +59,8 @@ const AddRecipe = () => {
       setError('Failed to add recipe. Please try again.'); // Generic error message for unexpected errors
     }
   };
+  
+  
 
   return (
     <div className="add-recipe-page">

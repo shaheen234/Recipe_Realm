@@ -64,13 +64,16 @@ class AddRecipeView(APIView):
                     try:
                         user = User.objects.get(user_id=user_id)
                     except User.DoesNotExist:
+                        
                         return Response({'details':'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
             except jwt.ExpiredSignatureError:
+                print("hello")
                 return Response({'details':'JWT has expired'}, status=status.HTTP_400_BAD_REQUEST)
             except jwt.InvalidTokenError:
                 return Response({'details':'Invalid JWT'}, status=status.HTTP_400_BAD_REQUEST)
         data = request.data.copy()
         data['user']=user_id
+        print(data)
         serializer = RecipeSerializer(data=data)
         print(serializer.is_valid())
         if serializer.is_valid():
