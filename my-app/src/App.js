@@ -8,7 +8,8 @@ import AboutUs from "./Aboutus";
 import Contact from "./Contacts";
 import HomePage from "./home";
 import PostPage from "./postpage";
-import AddRecipe from "./AddRecipe"; // Import the AddRecipe component
+import AddRecipe from "./AddRecipe";
+import MyRecipes from "./MyRecipe"; // Import MyRecipes component
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -25,7 +26,8 @@ function App() {
             <li><Link to="/home">Home</Link></li>
             <li><Link to="/about-us">About Us</Link></li>
             <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/add-recipe">Add Recipe</Link></li> {/* Add Recipe button */}
+            <li><Link to="/add-recipe">Add Recipe</Link></li>
+            <li><Link to="/my-recipes">My Recipes</Link></li> {/* Add My Recipes link */}
           </ul>
           <LoginRegisterButton 
             currentForm={currentForm}
@@ -44,7 +46,8 @@ function App() {
           <Route path="/post/:id" element={<PostPage />} />
           <Route path="/login" element={<Login onFormSwitch={toggleForm} />} />
           <Route path="/register" element={<Register onFormSwitch={toggleForm} />} />
-          <Route path="/add-recipe" element={<AddRecipe />} /> {/* Add route for AddRecipe */}
+          <Route path="/add-recipe" element={<AddRecipe />} />
+          <Route path="/my-recipes" element={<MyRecipes />} /> {/* Add route for My Recipes */}
         </Routes>
       </div>
     </Router>
