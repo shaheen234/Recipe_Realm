@@ -56,7 +56,7 @@ const AddRecipe = () => {
       }
     } catch (e) {
       console.error('Error adding recipe:', e);
-      setError('Failed to add recipe. Please try again.'); // Generic error message for unexpected errors
+      setError('Failed to add recipe. Please try again.'); // Hello,Generic error message for unexpected errors
     }
   };
   

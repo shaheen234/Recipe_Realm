@@ -9,7 +9,7 @@ import Contact from "./Contacts";
 import HomePage from "./home";
 import PostPage from "./postpage";
 import AddRecipe from "./AddRecipe";
-import MyRecipes from "./MyRecipe"; // Import MyRecipes component
+import MyRecipes from "./MyRecipe"; //Hello, Import MyRecipes component
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');

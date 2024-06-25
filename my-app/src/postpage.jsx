@@ -29,7 +29,7 @@ const PostPage = () => {
   }, [id]); // Fetch whenever the `id` parameter changes
 
   if (!post) {
-    return <div>Loading...</div>; // You can render a loading indicator
+    return <div>Loading...</div>; //Hello, You can render a loading indicator
   }
 
   const handleCommentSubmit = (e) => {

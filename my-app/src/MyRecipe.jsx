@@ -12,7 +12,7 @@ const MyRecipes = () => {
         const response = await fetch('http://localhost:8000/api/my-recipes/', {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assuming you store the token in localStorage
+            'Authorization': `Bearer ${localStorage.getItem('token')}`, //Hello, Assuming you store the token in localStorage
           }
         });
         if (!response.ok) {

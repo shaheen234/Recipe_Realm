@@ -21,7 +21,7 @@ export const Login = (props) => {
         };
         const requestOptions = {
             method: 'POST',
-                credentials: 'include', // 'include' to send cookies
+                credentials: 'include', //Hello, 'include' to send cookies
               
             headers: {
                 'Content-Type': 'application/json',

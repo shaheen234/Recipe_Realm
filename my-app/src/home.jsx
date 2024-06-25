@@ -59,7 +59,7 @@ const HomePage = () => {
         </div>
       </div>
       <ul className="posts-grid">
-        {/* Display filtered recipes if a recipe type is selected */}
+        {/*Hello, Display filtered recipes if a recipe type is selected */}
         {selectedRecipeType ? (
           recipes.map(recipe => (
             recipe.recipetype === selectedRecipeType && (
