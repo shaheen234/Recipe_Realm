@@ -62,7 +62,7 @@ const MyRecipes = () => {
           <li key={recipe.recipe_id} className="post-item">
             <img src={`http://localhost:8000${recipe.image}`} alt={recipe.title} />
             <h2 className="recipe-title">{recipe.title}</h2>
-            <p className="recipe-desc">{recipe.description}</p>
+            <p className="recipe-desc">{recipe.description.slice(0,100)}...</p>
             <div className="recipe-actions">
               <Link to={`/edit-recipe/${recipe.recipe_id}`} className="edit-btn">Edit</Link>
               <button onClick={() => handleDelete(recipe.recipe_id)} className="delete-btn">Delete</button>
