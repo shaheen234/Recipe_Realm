@@ -78,9 +78,9 @@ const AddRecipe = () => {
             <label>Category:</label>
             <select value={category} onChange={(e) => setCategory(e.target.value)} required>
               <option value="">Select Category</option>
-              <option value="meal">Meal</option>
-              <option value="breakfast">Breakfast</option>
-              <option value="dessert">Dessert</option>
+              <option value="Meal">Meal</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Dessert">Dessert</option>
             </select>
           </div>
           <div>

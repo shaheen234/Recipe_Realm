@@ -51,32 +51,12 @@ const PostPage = () => {
       <h1>{post.title}</h1>
       <img src={`http://127.0.0.1:8000${post.image}`} alt={post.title} style={{ width: '300px' }} />
       <p>{post.description}</p>
+      <p style={{ fontSize: '30px' }}>Ingredients: {post.ingredients}</p>
       <p>Time to Cook: {post.minutes_to_cook}</p>
       <p>Owner: {owner.name}</p>
       
 
-      <div className="comments-section-container">
-        <div className="comments-section">
-          <h2>Comments</h2>
-          <form onSubmit={handleCommentSubmit} className="comment-form">
-            <textarea 
-              value={commentText} 
-              onChange={(e) => setCommentText(e.target.value)} 
-              placeholder="Add a comment" 
-              required
-            />
-            <button type="submit">Submit</button>
-          </form>
-          <ul className="comments-list">
-            {comments.map(comment => (
-              <li key={comment.id} className="comment-item">
-                <p>{comment.text}</p>
-                <span>{comment.date}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      
     </div>
   );
 };
