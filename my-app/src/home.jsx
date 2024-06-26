@@ -78,7 +78,7 @@ const HomePage = () => {
             recipe.recipetype === selectedRecipeType && (
               <li key={recipe.recipe_id} className="post-item">
                 <Link to={`/post/${recipe.recipe_id}`}>
-                  <img src={`http://127.0.0.1:8000${recipe.image}`} alt={recipe.title} />
+                  <img className='post-img' src={`http://127.0.0.1:8000${recipe.image}`} alt={recipe.title} />
                   <h2 className="recipe-title">{recipe.title}</h2>
                   <p className="recipe-desc">{recipe.description}</p>
                 </Link>

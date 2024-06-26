@@ -48,10 +48,9 @@ button {
   color: #ffffff;
 }
 
-button:hover{
+button:hover {
   background-color: #BFB8AD;
 }
-
 
 .link-btn {
   background: none;
@@ -66,11 +65,11 @@ h1 {
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 0;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
   list-style: none;
 }
 
@@ -102,15 +101,16 @@ h1 {
 }
 
 .par-coursel {
-  width: fit-content;
+  width: 600px;
   margin: auto;
   align-items: center;
 }
 
 .par-coursel .coursel {
   display: grid;
-  grid-template-columns: repeat(3, 0fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-gap: 1rem;
+  justify-items: center;
 }
 
 /* Add Recipe styles */
@@ -121,7 +121,7 @@ h1 {
 }
 
 .add-recipe-container {
-  max-width: 800px; /*Hello, Increase the max width */
+  max-width: 800px;
   margin: 50px auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -163,7 +163,7 @@ h1 {
   cursor: pointer;
 }
 
-.img-small{
+.img-small {
   color: black;
 }
 
@@ -174,17 +174,17 @@ h1 {
 /* Comment section */
 .comments-section-container {
   display: flex;
-  justify-content: center; /* Center the container horizontally */
+  justify-content: center;
   margin-top: 20px;
 }
 
 .comments-section {
-  max-width: 600px; /* Set a max width for the comment section */
-  width: 100%; /* Ensure it takes full width up to max width */
-  background-color: #cdcdcd; /* Optional: Add background color for better visibility */
-  padding: 20px; /* Optional: Add padding for better spacing */
-  border-radius: 8px; /* Optional: Add border radius for rounded corners */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow */
+  max-width: 600px;
+  width: 100%;
+  background-color: #cdcdcd;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .comment-form {
@@ -233,10 +233,48 @@ h1 {
   color: #777;
 }
 
-.bubble-text{
+.bubble-text {
   color: #000000;
 }
 
-.bubble-text:hover{
+.bubble-text:hover {
   color: #8A3033;
+}
+
+.post-img{
+  height: 100px;
+  width: 100px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .App {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .auth-form-container {
+    padding: 2rem;
+    margin: 1rem;
+    border: none;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .add-recipe-container {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .par-coursel {
+    width: fit-content;
+  }
+
+  .par-coursel .coursel {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }
