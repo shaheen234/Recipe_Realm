@@ -9,7 +9,8 @@ import Contact from "./Contacts";
 import HomePage from "./home";
 import PostPage from "./postpage";
 import AddRecipe from "./AddRecipe";
-import MyRecipes from "./MyRecipe"; //Hello, Import MyRecipes component
+import MyRecipes from "./MyRecipe";
+import SavedRecipes from "./SavedRecipe"; // Import SavedRecipes component
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -27,7 +28,8 @@ function App() {
             <li><Link to="/about-us">About Us</Link></li>
             <li><Link to="/contact">Contact</Link></li>
             <li><Link to="/add-recipe">Add Recipe</Link></li>
-            <li><Link to="/my-recipes">My Recipes</Link></li> {/* Add My Recipes link */}
+            <li><Link to="/my-recipes">My Recipes</Link></li>
+            <li><Link to="/saved-recipes">Saved Recipes</Link></li> {/* Add Saved Recipes link */}
           </ul>
           <LoginRegisterButton 
             currentForm={currentForm}
@@ -47,7 +49,8 @@ function App() {
           <Route path="/login" element={<Login onFormSwitch={toggleForm} />} />
           <Route path="/register" element={<Register onFormSwitch={toggleForm} />} />
           <Route path="/add-recipe" element={<AddRecipe />} />
-          <Route path="/my-recipes" element={<MyRecipes />} /> {/* Add route for My Recipes */}
+          <Route path="/my-recipes" element={<MyRecipes />} />
+          <Route path="/saved-recipes" element={<SavedRecipes />} /> {/* Add route for Saved Recipes */}
         </Routes>
       </div>
     </Router>

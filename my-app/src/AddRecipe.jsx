@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import './App.css'; // Import the CSS file
 
 const AddRecipe = () => {
@@ -9,7 +9,7 @@ const AddRecipe = () => {
   const [ingredients, setIngredients] = useState('');
   const [description, setDescription] = useState('');
   const [cookingTime, setCookingTime] = useState('');
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [error, setError] = useState(null);
 
   const handleFileChange = (e) => {

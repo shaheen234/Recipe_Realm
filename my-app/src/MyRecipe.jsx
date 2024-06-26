@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMyRecipes = async () => {
@@ -12,7 +12,7 @@ const MyRecipes = () => {
         const response = await fetch('http://localhost:8000/api/my-recipes/', {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`, //Hello, Assuming you store the token in localStorage
+            'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assuming you store the token in localStorage
           }
         });
         if (!response.ok) {
