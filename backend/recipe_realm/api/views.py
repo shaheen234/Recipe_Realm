@@ -188,6 +188,41 @@ class MyrecipeView(APIView):
         recipes = Recipe.objects.filter(user_id=user_id)
         serializer = RecipeSerializer(recipes, many=True)
         return Response({'recipes': serializer.data}, status=status.HTTP_200_OK)
+
+class EditRecipeView(APIView):
+    
+
+    def put(self, request, recipe_id):
+        token = request.COOKIES.get('jwt_access_token')
+        if token:
+            if token.startswith('Bearer '):
+                token = token.split(' ')[1]
+            try:
+                decoded_token = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+                user_id = decoded_token.get('user_id')
+                if user_id:
+                    try:
+                        user = User.objects.get(user_id=user_id)
+                    except User.DoesNotExist:
+                        return Response({'details': 'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+            except jwt.ExpiredSignatureError:
+                return Response({'details': 'JWT has expired'}, status=status.HTTP_400_BAD_REQUEST)
+            except jwt.InvalidTokenError:
+                return Response({'details': 'Invalid JWT'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            recipe = Recipe.objects.get(recipe_id=recipe_id)
+        except Recipe.DoesNotExist:
+            return Response({'details': 'Recipe not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        if recipe.user.user_id != user_id:
+            return Response({'details': 'You do not have permission to edit this recipe'}, status=status.HTTP_403_FORBIDDEN)
+
+        serializer = RecipeSerializer(recipe, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'recipe': serializer.data, 'detail': 'Recipe updated successfully'}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
          
 
 
