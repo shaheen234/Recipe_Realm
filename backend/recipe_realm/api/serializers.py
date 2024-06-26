@@ -40,7 +40,7 @@ class Loginserializer(serializers.Serializer):
 class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
-        fields = ['recipetype', 'description', 'ingredients', 'title', 'minutes_to_cook', 'user', 'image']
+        fields = ['recipe_id','recipetype', 'description', 'ingredients', 'title', 'minutes_to_cook', 'user', 'image']
 
         def create(self, validated_data):
             # user = self.context['request'].user

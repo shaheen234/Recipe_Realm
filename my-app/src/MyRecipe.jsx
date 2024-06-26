@@ -5,16 +5,18 @@ const MyRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   //const navigate = useNavigate();
+
   const getCookie = (name) => {
     const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
     return cookieValue ? cookieValue.pop() : '';
   };
-
+  
   useEffect(() => {
     const fetchMyRecipes = async () => {
       try {
         const response = await fetch('http://localhost:8000/api/myrecipe/', {
           method: 'GET',
+          credentials: 'include', // Ensure credentials are included
           headers: {
             Authorization: `Bearer ${getCookie('jwt_access_token')}`, // Assuming you have a function to get the cookie value
           },
@@ -33,16 +35,19 @@ const MyRecipes = () => {
 
   const handleDelete = async (recipeId) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/delete-recipe/${recipeId}/`, {
+      const response = await fetch(`http://localhost:8000/api/delete_recipe/${recipeId}/`, {
         method: 'DELETE',
+        credentials: 'include', // Ensure credentials are included\
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${getCookie('jwt_access_token')}`, // Assuming you have a function to get the cookie value
         }
       });
-      if (!response.ok) {
+      console.log(response)
+      if (!response.status === 204) {
         throw new Error('Failed to delete recipe');
       }
       setRecipes(recipes.filter(recipe => recipe.recipe_id !== recipeId));
+      // let data = await response.json()
     } catch (error) {
       setError(error.message);
     }

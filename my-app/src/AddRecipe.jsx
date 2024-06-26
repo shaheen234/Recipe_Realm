@@ -19,6 +19,7 @@ const AddRecipe = () => {
   };
   const getCookie = (name) => {
     const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    console.log(cookieValue)
     return cookieValue ? cookieValue.pop() : '';
   };
   const handleSubmit = async (e) => {
