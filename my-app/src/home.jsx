@@ -75,11 +75,11 @@ const HomePage = () => {
       <ul className="posts-grid">
         {selectedRecipeType ? (
           recipes.map(recipe => (
-            recipe.recipetype === selectedRecipeType && (
+            recipe.recipe_type === selectedRecipeType && (
               <li key={recipe.recipe_id} className="post-item">
                 <Link to={`/post/${recipe.recipe_id}`}>
                   <div className="post-image">
-                    <img className='post-img' src={`http://127.0.0.1:8000${recipe.image}`} alt={recipe.title} />
+                    <img className='post-imgIN' src={`http://127.0.0.1:8000${recipe.image}`} alt={recipe.title} />
                   </div>
                   <h2 className="recipe-title">{recipe.title}</h2>
                   <p className="recipe-desc">{recipe.description}</p>
@@ -95,7 +95,6 @@ const HomePage = () => {
                 <img src={`http://127.0.0.1:8000${recipe.image}`} alt={recipe.title} />
                 <h2 className="recipe-title">{recipe.title}</h2>
                 <p className="recipe-desc">{recipe.description}</p>
-                <p >{recipe.recipetype}</p>
               </Link>
               <button onClick={() => saveRecipe(recipe.recipe_id)}>Save Recipe</button>
             </li>
