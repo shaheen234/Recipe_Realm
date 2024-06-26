@@ -50,8 +50,8 @@ const HomePage = () => {
   return (
     <div className="home-banner">
       <h1>What recipe you want?</h1>
-      <div className='par-coursel'>
-        <div className='coursel'>
+      <div className="par-coursel">
+        <div className="coursel">
           <div className="bubble-cuisines" role="button" aria-label="Breakfast">
             <Link to="#" onClick={() => filterRecipes('Breakfast')} role="button" aria-label="Breakfast" >
               <img alt="" src="https://x.yummlystatic.com/web/bubble/cuisine/american.png" className="bubble-image" />
@@ -92,7 +92,9 @@ const HomePage = () => {
           recipes.map(recipe => (
             <li key={recipe.recipe_id} className="post-item">
               <Link to={`/post/${recipe.recipe_id}`}>
-                <img src={`http://127.0.0.1:8000${recipe.image}`} alt={recipe.title} />
+                <div className="post-image">
+                  <img className='post-imgIN' src={`http://127.0.0.1:8000${recipe.image}`} alt={recipe.title} />
+                </div>
                 <h2 className="recipe-title">{recipe.title}</h2>
                 <p className="recipe-desc">{recipe.description}</p>
               </Link>
