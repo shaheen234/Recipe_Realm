@@ -5,15 +5,19 @@ const MyRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   //const navigate = useNavigate();
+  const getCookie = (name) => {
+    const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return cookieValue ? cookieValue.pop() : '';
+  };
 
   useEffect(() => {
     const fetchMyRecipes = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/my-recipes/', {
+        const response = await fetch('http://localhost:8000/api/myrecipe/', {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assuming you store the token in localStorage
-          }
+            Authorization: `Bearer ${getCookie('jwt_access_token')}`, // Assuming you have a function to get the cookie value
+          },
         });
         if (!response.ok) {
           throw new Error('Failed to fetch recipes');

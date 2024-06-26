@@ -134,6 +134,7 @@ class AddComment(APIView):
                 return Response({'details':'Invalid JWT'}, status=status.HTTP_400_BAD_REQUEST)
         data = request.data.copy()
     
+    
 class DeleteRecipeView(APIView):
     
     def delete(self, request, recipe_id):
@@ -164,6 +165,31 @@ class DeleteRecipeView(APIView):
 
         recipe.delete()
         return Response({'details': 'Recipe deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+
+class MyrecipeView(APIView):
+    def get(self, request):
+        token = request.COOKIES.get('jwt_access_token')
+        if token:
+            if token.startswith('Bearer '):
+                token = token.split(' ')[1]
+            try:
+                decoded_token = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+                user_id = decoded_token.get('user_id')
+                if user_id:
+                    try:
+                        user = User.objects.get(user_id=user_id)
+                    except User.DoesNotExist:
+                        return Response({'details': 'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+            except jwt.ExpiredSignatureError:
+                return Response({'details': 'JWT has expired'}, status=status.HTTP_400_BAD_REQUEST)
+            except jwt.InvalidTokenError:
+                return Response({'details': 'Invalid JWT'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        recipes = Recipe.objects.filter(user_id=user_id)
+        serializer = RecipeSerializer(recipes, many=True)
+        return Response({'recipes': serializer.data}, status=status.HTTP_200_OK)
+         
+
 
 
 
