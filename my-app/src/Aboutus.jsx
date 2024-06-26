@@ -6,25 +6,12 @@ const AboutUs = () => {
     <div className="page-container about-us">
       <h1>About Us</h1>
       <section className="mission">
-        <h2>Our Mission</h2>
-        <p>
-          Our mission is to provide high-quality products and services that meet the needs of our customers. 
-          We strive to innovate and continuously improve in all aspects of our business.
-        </p>
+        <h2>WHO WE ARE</h2>
+        <p>Welcome to Recipe Realm, your number one source for discovering, creating, and sharing delicious recipes. Our journey began with a simple idea: to bring together food enthusiasts from all walks of life and create a vibrant community where everyone can share their culinary adventures.</p>
       </section>
       <section className="team">
-        <h2>Meet the Team</h2>
-        <div className="team-member">
-          <img src="path_to_image" alt="Team Member" />
-          <h3>John Doe</h3>
-          <p>CEO</p>
-        </div>
-        <div className="team-member">
-          <img src="path_to_image" alt="Team Member" />
-          <h3>Jane Smith</h3>
-          <p>Chief Operating Officer</p>
-        </div>
-        {/* Add more team members as needed */}
+      <h2>OUR MISSION</h2>
+      <p>At Recipe Realm, we believe that cooking is more than just preparing food; it's a form of art, a way to express creativity, and a means to bring people together. Our mission is to inspire and empower individuals to explore their culinary potential, try new recipes, and share their own creations with a like-minded community.</p>
       </section>
       <section className="history">
         <h2>Our History</h2>
