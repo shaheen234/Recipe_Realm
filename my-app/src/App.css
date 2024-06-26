@@ -242,7 +242,7 @@ h1 {
 }
 
 .post-img{
-  background-size: 100vh 100vw;
+  /*background-size: 100vh 100vw;*/
 }
 
 /* Responsive styles */
