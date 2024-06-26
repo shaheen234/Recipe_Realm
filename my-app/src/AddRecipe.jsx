@@ -7,7 +7,7 @@ const AddRecipe = () => {
   const [title, setTitle] = useState('');
   const [imageFile, setImageFile] = useState(null); // State to hold the uploaded image file
   const [ingredients, setIngredients] = useState('');
-  const [instructions, setInstructions] = useState('');
+  const [description, setDescription] = useState('');
   const [cookingTime, setCookingTime] = useState('');
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -91,8 +91,8 @@ const AddRecipe = () => {
             <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)} required />
           </div>
           <div>
-            <label>Instructions:</label>
-            <textarea value={instructions} onChange={(e) => setInstructions(e.target.value)} required />
+            <label>Description:</label>
+            <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
           </div>
           <div>
             <label>Minutes of Cooking:</label>
